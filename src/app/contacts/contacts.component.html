@@ -1,3 +1,10 @@
-<p>
-  contacts works!
-</p>
+<div *ngIf="contacts" class="list-shell">
+  <table>
+    <tr *ngFor="let contact of contacts; let idx=index">
+      <td><b>{{idx+1}}&nbsp;</b></td>
+      <td>{{contact.firstName}}</td>
+      <td>{{contact.lastName}}</td>
+      <td>{{contact.company}}</td>
+    </tr>
+  </table>
+</div>
