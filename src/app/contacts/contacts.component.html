@@ -1,0 +1,16 @@
+<h3>Connection Status:
+  <span [ngClass]="{'offlineText': connectionStatus.toLowerCase() == 'offline'}">{{connectionStatus}}</span>
+</h3>
+
+<button (click)="getContacts()">Retrieve contacts</button>
+
+<div class="list-shell">
+  <table *ngIf="contacts">
+    <tr *ngFor="let contact of contacts; let idx=index">
+      <td><b>{{idx+1}}&nbsp;</b></td>
+      <td>{{contact.firstName}}</td>
+      <td>{{contact.lastName}}</td>
+      <td>{{contact.company}}</td>
+    </tr>
+  </table>
+</div>

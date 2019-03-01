@@ -1,0 +1,25 @@
+.list-shell
+{
+  height: 440px;
+  width: 520px;
+  overflow: auto;
+  border: solid 1px black;
+}
+
+.contacts
+{
+
+}
+
+.offlineText {
+  font-weight: bold;
+  color: red;
+}
+
+button
+{
+  border-radius: 10px;
+  height: 30px;
+  width: 170px;
+  margin-bottom: 10px;
+}
