@@ -1,3 +1,7 @@
+<span>Connection Status:
+  <span [ngClass]="{'offlineText': connectionStatus.toLowerCase() == 'offline'}">{{connectionStatus}}</span>
+</span>
+
 <div *ngIf="contacts" class="list-shell">
   <table>
     <tr *ngFor="let contact of contacts; let idx=index">

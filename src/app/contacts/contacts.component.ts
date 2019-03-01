@@ -13,6 +13,10 @@ export class ContactsComponent implements OnInit {
 
   contacts: Contact[];
 
+  get connectionStatus() {
+    return this.contactService.online? "Online" : "Offline";
+  }
+
   constructor(private contactService: ContactService)
   {}
 

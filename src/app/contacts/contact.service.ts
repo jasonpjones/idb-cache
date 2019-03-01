@@ -4,6 +4,7 @@ import { Observable, of, Subject, throwError } from 'rxjs'
 import { Contact } from '../model/contact.model';
 import { AuthManager } from '../auth/auth.manager';
 import { catchError } from "rxjs/internal/operators";
+import { ConnectionService } from '../web/connection.service';
 
 
 @Injectable({
@@ -12,11 +13,16 @@ import { catchError } from "rxjs/internal/operators";
 export class ContactService {
 
   contactUrl = 'api/contacts';
+  public online: boolean;
 
   constructor(
     private authManager: AuthManager,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private connectionService: ConnectionService
+  ) {
+    this.registerConnectionEvents();
+    this.online = connectionService.isOnline;
+  }
 
   getUrl(): string {
     return `${this.authManager.getServer()}${this.contactUrl}`;
@@ -39,6 +45,18 @@ export class ContactService {
   private handleError(error: Error): Observable<Error> {
     console.log(error.message);
     return throwError(error);
+  }
+
+  private registerConnectionEvents() {
+    this.connectionService.connectionChanged.subscribe(online => {
+      if(online) {
+        console.log('online');
+      }
+      else {
+        console.log('offline');
+      }
+      this.online = online;
+    })
   }
 
 }

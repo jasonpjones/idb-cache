@@ -9,3 +9,8 @@
 {
 
 }
+
+.offlineText {
+  font-weight: bold;
+  color: red;
+}
